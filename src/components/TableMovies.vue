@@ -1,5 +1,6 @@
 <template>
     <div>
+        <input v-model="input" type="text" @keydown="search">
         <table>
             <tr>
                 <th
@@ -21,6 +22,7 @@
             </tr>
         </table>
         <div class="pagination">
+            <span>{{ currentPage }}/{{ movies.pages }}</span>
             <button v-if="movies.prev" @click="goTo(movies.prev)">
                 Anterior
             </button>
@@ -54,7 +56,8 @@
                 data: [],
                 sortDir: 'asc',
                 sortBy: 'title',
-                currentPage: this.page
+                currentPage: this.page,
+                input: ''
             }
         },
         async created () {
@@ -75,7 +78,11 @@
                 this.movies = this.$pagination(this.data, this.pages, page || this.currentPage)
             },
             goTo (page) {
+                this.currentPage = page
                 this.paginate(page)
+            },
+            search () {
+                this.movies = this.$pagination(this.data.filter(item => item.title.toLowerCase().includes(this.input.toLowerCase())), this.pages, 1)
             }
         }
     }
