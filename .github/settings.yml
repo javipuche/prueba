@@ -1,0 +1,18 @@
+labels:
+  - name: bug
+    color: CC0000
+    description: An issue with the system 🐛.
+
+  - name: feature
+    # If including a `#`, make sure to wrap it with quotes!
+    color: '#336699'
+    description: New functionality.
+
+  - name: first-timers-only
+    # include the old name to rename an existing label
+    oldname: Help Wanted
+
+
+  - name: first-timers-only-2
+    # include the old name to rename an existing label
+    oldname: Help Wanted
